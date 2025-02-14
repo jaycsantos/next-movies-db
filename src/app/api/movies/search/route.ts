@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { parseSearchParams } from 'zod-search-params';
-import { api } from '../..';
+import { api, extractHeader } from '../..';
 import { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -13,11 +13,10 @@ export async function GET(req: NextRequest) {
     page: params.page.toString(),
   });
 
-  const { data, status, statusText } = await api(`/search/movie?${query}`, {
+  return await api(`/search/movie?${query}`, {
+    headers: extractHeader(req.headers, ['if-none-match']),
     next: { revalidate: 3600 }, // 1hr
   });
-
-  return Response.json(data, { status, statusText });
 }
 
 const schema = z.object({

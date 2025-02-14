@@ -1,8 +1,8 @@
-import { api } from '../..';
+import { api, extractHeader } from '../..';
 
 // export const dynamic = 'auto';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const query = new URLSearchParams({
     include_adult: 'false',
     include_video: 'false',
@@ -10,9 +10,8 @@ export async function GET() {
     // sort_by: 'popularity.desc',
   });
 
-  const { data, status, statusText } = await api(`/movie/upcoming?${query}`, {
+  return await api(`/movie/upcoming?${query}`, {
+    headers: extractHeader(req.headers, ['if-none-match']),
     next: { revalidate: 43200 }, // 12hrs
   });
-
-  return Response.json(data, { status, statusText });
 }
