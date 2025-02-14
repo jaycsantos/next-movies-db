@@ -24,6 +24,32 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground bg-radial-[at_25%_25%] from-white/10 to-transparent to-75%;
+  }
+
+  html {
+    overflow-y: scroll;
+  }
+
+  .content-pending {
+    .content {
+      @apply empty:bg-muted rounded empty:h-[1em] empty:min-w-1/2;
+    }
+    p.content:empty {
+      @apply h-[4em] bg-transparent;
+
+      &::before,
+      &::after {
+        @apply bg-muted mb-2 block h-[1.5em] min-w-1/2 rounded;
+        content: '';
+      }
+    }
+  }
 }
 
 :root {
@@ -94,17 +120,4 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
-
-/*
-  ---break---
-*/
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }
