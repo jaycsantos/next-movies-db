@@ -28,31 +28,26 @@
 
 :root {
   color-scheme: light dark;
-  --background: light-dark(hsl(273 67% 98%), hsl(273 48% 2%));
-  --foreground: light-dark(hsl(273 76% 0%), hsl(273 14% 98%));
-  --muted: light-dark(hsl(33 22% 91%), hsl(33 22% 9%));
-  --muted-foreground: light-dark(hsl(33 9% 39%), hsl(33 9% 61%));
-  --popover: light-dark(hsl(273 67% 97%), hsl(273 48% 3%));
-  --popover-foreground: light-dark(hsl(0 0% 0%), hsl(273 14% 99%));
-  --card: light-dark(hsl(273 67% 97%), hsl(273 48% 3%));
-  --card-foreground: light-dark(hsl(0 0% 0%), hsl(273 14% 99%));
-  --border: light-dark(hsl(273 12% 91%), hsl(273 12% 12%));
-  --input: light-dark(hsl(273 12% 91%), hsl(273 12% 12%));
-  --primary: hsl(273 77% 22%);
-  --primary-foreground: hsl(273 77% 82%);
-  --secondary: hsl(33 77% 22%);
-  --secondary-foreground: hsl(33 77% 82%);
-  --accent: hsl(153 77% 22%);
-  --accent-foreground: hsl(0 0% 100%);
-  --destructive: light-dark(hsl(2 93% 45%), hsl(2 93% 54%));
-  --destructive-foreground: hsl(0 0% 100%);
-  --ring: hsl(273 77% 22%);
-  --chart-1: hsl(273 77% 22%);
-  --chart-2: hsl(33 77% 22%);
-  --chart-3: hsl(153 77% 22%);
-  --chart-4: hsl(33 77% 25%);
-  --chart-5: hsl(273 80% 22%);
-  --radius: 0.125rem;
+  --background: light-dark(hsl(213.2 50% 100%), hsl(213.2 50% 10%));
+  --foreground: light-dark(hsl(213.2 2.5% 10%), hsl(213.2 2.5% 100%));
+  --card: light-dark(hsl(213.2 25% 100%), hsl(213.2 25% 10%));
+  --card-foreground: light-dark(hsl(213.2 2.5% 15%), hsl(213.2 2.5% 100%));
+  --popover: light-dark(hsl(213.2 50% 100%), hsl(213.2 50% 5%));
+  --popover-foreground: light-dark(hsl(213.2 97.5% 10%), hsl(213.2 2.5% 100%));
+  --primary: light-dark(hsl(213.2 88.7% 45.1%), hsl(213.2 88.7% 45.1%));
+  --primary-foreground: light-dark(hsl(0 0% 100%), hsl(0 0% 100%));
+  --secondary: light-dark(hsl(213.2 20% 90%), hsl(213.2 20% 20%));
+  --secondary-foreground: light-dark(hsl(0 0% 0%), hsl(0 0% 100%));
+  --muted: light-dark(hsl(251.2 20% 95%), hsl(251.2 20% 25%));
+  --muted-foreground: light-dark(hsl(213.2 2.5% 40%), hsl(213.2 2.5% 65%));
+  --accent: light-dark(hsl(251.2 20% 90%), hsl(251.2 20% 25%));
+  --accent-foreground: light-dark(hsl(213.2 2.5% 15%), hsl(213.2 2.5% 95%));
+  --destructive: light-dark(hsl(0 75% 50%), hsl(0 75% 50%));
+  --destructive-foreground: light-dark(hsl(213.2 2.5% 100%), hsl(213.2 2.5% 100%));
+  --border: light-dark(hsl(213.2 25% 82%), hsl(213.2 25% 15%));
+  --input: light-dark(hsl(213.2 25% 50%), hsl(213.2 25% 50%));
+  --ring: light-dark(hsl(213.2 88.7% 45.3%), hsl(213.2 88.7% 45.3%));
+  --radius: 0rem;
 }
 
 /* @media (prefers-color-scheme: dark) {
