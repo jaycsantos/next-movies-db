@@ -18,6 +18,7 @@ export default function Home() {
         <div className="flex min-w-full flex-row space-x-4 md:min-w-[480px]">
           <Search placeholder="Search" className="w-full" />
         </div>
+        <UpComingMovies className="flex-1" />
       </main>
       <Footer />
     </div>
