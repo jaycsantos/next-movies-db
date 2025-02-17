@@ -1,4 +1,4 @@
-import urljoin from 'url-join';
+import urljoin from 'proper-url-join';
 
 const API_URL =
   process.env.API_URL ??
