@@ -1,3 +1,4 @@
+import { NextRequest } from 'next/server';
 import { api, extractHeader } from '../..';
 
 // export const dynamic = 'auto';

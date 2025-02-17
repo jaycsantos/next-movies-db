@@ -20,7 +20,7 @@ export default function MoviePage({ params }: { params: Promise<{ id: string }> 
   // const isPending = true;
 
   return (
-    <div className={cn('flex flex-col', isPending && 'content-pending')}>
+    <div className={cn('flex flex-col relative', isPending && 'content-pending')}>
       <div className="min-h-200 bg-black">
         {movie?.backdrop_path && (
           <div
@@ -58,6 +58,13 @@ export default function MoviePage({ params }: { params: Promise<{ id: string }> 
           </div>
         </div>
       </div>
+
+      {error && (
+        <div className="absolute inset-0 top-1/2 text-center">
+          <b className="text-destructive">Something went wrong</b>
+          <p>Refresh the page or try again later.</p>
+        </div>
+      )}
     </div>
   );
 }

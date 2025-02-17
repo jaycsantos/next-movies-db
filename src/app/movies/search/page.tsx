@@ -48,7 +48,13 @@ export default function SearchPage({
               {data?.pages[0]?.total_results || 'No'} results
             </p>
           )}
-          {error && <p>{error.toString()}</p>}
+
+          {error && (
+            <div className="text-center">
+              <b className="text-destructive">Something went wrong</b>
+              <p>Refresh the page or try again later.</p>
+            </div>
+          )}
         </div>
       </div>
       <div className="flex h-full w-full flex-1 basis-2/3 px-2 py-4">
