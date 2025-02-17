@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project.
 
 ## Getting Started
 
-First, run the development server:
+### Set the [TMDB](https://developer.themoviedb.org/docs) API Key
+
+Rename `.env.example` to `.env.local` and replace with your api token.
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Using Custom Hooks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### `useUpComingMovies`
 
-## Learn More
+Fetches the list of upcoming movies.
 
-To learn more about Next.js, take a look at the following resources:
+**Usage:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```typescript
+import useUpComingMovies from '@/hooks/useUpComingMovies';
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+const { data, isPending, error, refetch } = useUpComingMovies();
+```
 
-## Deploy on Vercel
+### `useSearchMovies`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Searches for movies based on a query.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Parameters:**
+
+- `q` (string): The search query.
+
+**Usage:**
+
+```typescript
+import { useSearchMovies } from '@/hooks/useSearchMovies';
+
+const { data, isPending, error, fetchNextPage } = useSearchMovies('search query');
+```
+
+### `useMovie`
+
+Fetches details of a specific movie by ID.
+
+**Parameters:**
+
+- `id` (string): The ID of the movie.
+
+**Usage:**
+
+```typescript
+import { useMovie } from '@/hooks/useMovie';
+
+const { data, isPending, error } = useMovie('movieId');
+```
+
+### `useMovieCredits`
+
+Fetches the credits (cast and crew) of a specific movie by ID.
+
+**Parameters:**
+
+- `id` (string): The ID of the movie.
+
+**Usage:**
+
+```typescript
+import { useMovieCredits } from '@/hooks/useMovieCredits';
+
+const { data, isPending, error } = useMovieCredits('movieId');
+```
+
+## API Documentation
+
+### Upcoming Movies
+
+**Endpoint:** `/api/movies/upcoming`
+
+**Method:** `GET`
+
+**Parameters:** None
+
+**Response:**
+
+```json
+{
+  "results": [
+    {
+      "id": 123,
+      "title": "Movie Title",
+      "release_date": "2023-12-01"
+      // ...other movie details...
+    }
+    // ...more movies...
+  ]
+}
+```
+
+### Search Movies
+
+**Endpoint:** `/api/movies/search`
+
+**Method:** `GET`
+
+**Parameters:**
+
+- `q` (string): The search query.
+- `page` (number, optional): The page number (default is 1).
+
+**Response:**
+
+```json
+{
+  "results": [
+    {
+      "id": 123,
+      "title": "Movie Title",
+      "release_date": "2023-12-01"
+      // ...other movie details...
+    }
+    // ...more movies...
+  ]
+}
+```
+
+### Movie Details
+
+**Endpoint:** `/api/movies/[id]`
+
+**Method:** `GET`
+
+**Parameters:**
+
+- `id` (number): The ID of the movie.
+
+**Response:**
+
+```json
+{
+  "id": 123,
+  "title": "Movie Title",
+  "release_date": "2023-12-01"
+  // ...other movie details...
+}
+```
+
+### Movie Credits
+
+**Endpoint:** `/api/movies/[id]/credits`
+
+**Method:** `GET`
+
+**Parameters:**
+
+- `id` (number): The ID of the movie.
+
+**Response:**
+
+```json
+{
+  "id": 123,
+  "cast": [
+    {
+      "id": 456,
+      "name": "Actor Name",
+      "character": "Character Name"
+      // ...other cast details...
+    }
+    // ...more cast members...
+  ],
+  "crew": [
+    {
+      "id": 789,
+      "name": "Crew Member Name",
+      "job": "Job Title"
+      // ...other crew details...
+    }
+    // ...more crew members...
+  ]
+}
+```
