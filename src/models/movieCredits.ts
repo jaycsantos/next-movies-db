@@ -1,4 +1,4 @@
-import urlJoin from 'url-join';
+import urlJoin from 'proper-url-join';
 import { z } from 'zod';
 
 export const movieCastSchema = z.object({
