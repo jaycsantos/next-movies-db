@@ -185,3 +185,11 @@ const { data, isPending, error } = useMovieCredits('movieId');
   ]
 }
 ```
+
+## Developer Notes
+
+1. API end points does not make any transformations to tmdb api responses.
+2. Search is limited to tmdb search query; advanced search parameters are not supported/implemented.
+3. Search results uses "infinite" loading as you scroll.
+4. Credit cast/crew does not have a separate page, especially for movies with an extensive list. I've limited detail page to only the 12 people.
+5. Movie details are split between the details and the credits. It would have been better to include maybe partial credits into the details payload, but this would affect the caching so was skipped for now.
