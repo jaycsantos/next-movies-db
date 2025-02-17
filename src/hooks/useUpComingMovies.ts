@@ -3,7 +3,7 @@ import { movieListSchema } from '@/models/movie';
 import { useQuery } from '@tanstack/react-query';
 
 export default function useUpComingMovies() {
-  const { isPending, error, data, refetch } = useQuery({
+  return useQuery({
     queryKey: ['upcoming'],
     queryFn: () =>
       fetch('/api/movies/upcoming')
@@ -11,6 +11,4 @@ export default function useUpComingMovies() {
         .then((data) => movieListSchema.parse(data)),
     refetchOnWindowFocus: false,
   });
-
-  return { data, isPending, error, refetch };
 }
